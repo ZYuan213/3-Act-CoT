@@ -1,0 +1,10 @@
+openai == 0.28.0
+transformers
+pandas
+nltk
+datasets
+stanza
+numpy
+scipy
+sentence_transformers
+sklearn
