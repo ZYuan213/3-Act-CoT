@@ -74,7 +74,6 @@ print('*' * 100)
 for index, row in test_dataset.iterrows():
     print(f'第{index}行')
     event = row['event'].replace('[EVENT_e]', '').split('[EVENT_sep]')
-    # event = f'1. {event[1].strip()} 2. {event[2].strip()} 3. {event[3].strip()} 4. {event[4].strip()}'
     event = f'1.{event[1]}2.{event[2]}3.{event[3]}4.{event[4]}'
 
     question = f"""Request:
@@ -85,8 +84,6 @@ Answer:
     print(question)
     input_text = prompt + question
 
-    # input_ids = tokenizer.encode(input_text, return_tensors="pt").to(device)
-    # output = model.generate(input_ids, num_return_sequences=1, max_new_tokens = 512, temperature = 0.5, eos_token_id=tokenizer.eos_token_id, do_sample = True)
     input_ids = tokenizer(input_text, return_tensors="pt").to("cuda")
     for _ in range(10):
         output = model.generate(**input_ids, max_new_tokens=512, temperature=temperature, do_sample=True)
@@ -122,7 +119,6 @@ Answer:
         'inputs': event + '\t' + row['leading_context'],
         'gen_story': gen_story,
         'label': row['text'].replace(row['leading_context'], '').strip(),
-        # 'gen_text':response['content']
         'gen_text': generated_text
     }]
     new_data = pd.DataFrame(new_data)

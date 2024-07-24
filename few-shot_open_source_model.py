@@ -62,7 +62,6 @@ for index, row in test_dataset.iterrows():
     if index >= begin:
         print(f'第{index}行')
         event = row['event'].replace('[EVENT_e]', '').split('[EVENT_sep]')
-        # event = f'1. {event[1].strip()} 2. {event[2].strip()} 3. {event[3].strip()} 4. {event[4].strip()}'
         event = f'1.{event[1]}2.{event[2]}3.{event[3]}4.{event[4]}'
 
         question = f"""Request:

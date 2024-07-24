@@ -6,7 +6,7 @@ import numpy as np
 from scipy.spatial.distance import cosine
 import nltk
 
-# model = SentenceTransformer('/root/ZYuan/huggingface_model/paraphrase-multilingual-mpnet-base-v2') #多语言
+# model = SentenceTransformer('paraphrase-multilingual-mpnet-base-v2') #多语言
 model = SentenceTransformer('all-mpnet-base-v2')  # 英语
 
 path = ''
@@ -69,7 +69,6 @@ for _, row in tqdm(dataset.iterrows()):
     target_index = label_points_indices[max_idx] + 1  # 与输入最接近的样本
     new_data = [{
         'inputs': row['inputs'],
-        # 'inputs':model_input,
         'selected_gen_story': row[f'gen_story_{target_index}'],
         'label': row['label'],
         'cluster_label': AC.labels_,

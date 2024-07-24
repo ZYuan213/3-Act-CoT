@@ -58,7 +58,6 @@ for example in test_dataset:
     if index >= begin:
         print(f'第{index}行')
         gen_stories = []
-        # story_num = 5
         gen_texts = []
         try:
             event = example['event'].replace('[EVENT_e]', '').split('[EVENT_sep]')
@@ -97,7 +96,6 @@ for example in test_dataset:
                 gen_texts.append(response)
         except AttributeError as e:
             print(e)
-            # print(response['content'])
             print(response)
 
         new_data = [{

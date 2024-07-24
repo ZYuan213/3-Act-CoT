@@ -3,9 +3,6 @@ import pandas as pd
 from datasets import Dataset
 from tqdm import tqdm
 import re
-# import nltk
-import time
-# nltk.download('punkt')
 import stanza
 nlp = stanza.Pipeline(lang='en', processors='tokenize', download_method=None)
 openai.api_key = "Your_OpenAI_key"
@@ -76,7 +73,6 @@ for example in test_dataset:
     if index >= begin:
         print(f'第{index}行')
         gen_stories = []
-        # story_num = 5
         gen_texts = []
         try:
             event = example['event'].replace('[EVENT_e]', '').split('[EVENT_sep]')
